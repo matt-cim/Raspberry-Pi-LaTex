@@ -20,7 +20,7 @@
 \tableofcontents
 \newpage
 \section{About}
-The Pi's we are using are "Raspberry Pi 4 Model B" with 2GB of RAM. \href{https://www.amazon.com/Flirc-Raspberry-Pi-Case-Silver/dp/B07WG4DW52/ref=sr_1_5?keywords=Raspberry+Pi+4+Case&qid=1658852531&sr=8-5}{Link to the case the Pis use}. 
+The Pi's we are using are "Raspberry Pi 4 Model B" with 2GB of RAM. \href{https://www.amazon.com/Flirc-Raspberry-Pi-Case-Silver/dp/B07WG4DW52/ref=sr_1_5?keywords=Raspberry+Pi+4+Case&qid=1658852531&sr=8-5}{Link to the case the Pi's use}. 
 \subsection{Hardware Monitoring}
 For the most graphically appeasing view of the general hardware.\\ 
 (From Desktop) "Start" (Pi icon in the top left) \rightarrow "Accessories" \rightarrow "Task Manager" 
@@ -42,7 +42,7 @@ After right clicking on the wifi icon and selecting "Wireless \& Wired Network S
     \includegraphics[scale=1]{network config.pdf}
     \caption{Ensure you are in "wlan0" tab}
 \end{figure}
-\newline This is for a static ip configuration, which is the preferred config. and the "8.8.8.8" is just the primary DNS server for Google. One thing I noticed that was causing frequent problems with the ip address being randomly changed was the "Automatically configure empty options" box being checked even though the settings aboved were typed into the box. Please make sure this is \textbf{not checked}.
+\newline This is for a static ip configuration, which is the preferred config. and the "8.8.8.8" is just the primary DNS server for Google. One thing I noticed that was causing frequent problems with the ip address being randomly changed was the "Automatically configure empty options" box being checked even though the settings above were typed into the box. Please make sure this is \textbf{not checked}.
 \subsection{Finding ip via Terminal}
 Typing in the command \textbf{ifconfig} will give you the netmask, and the ip can be found next to "inet" under the "wlan0" section.
 
@@ -54,9 +54,9 @@ VNC viewer is what we are currently using for remote connection into the Pi's, a
 Steps for setting up VNC Viewer:
 \begin{enumerate}
   \item Download \href{https://www.realvnc.com/en/connect/download/vnc/}{VNC Server for the Raspberry Pi OS}
-  \item Take note of the ip under "Connectivity" and the passphrase under "Security" (see Figure 3)
-  \item From the computer you want to connect from, download \href{https://www.realvnc.com/en/connect/download/viewer/}{VNC Viewer for OS of this machine} 
-  \item From VNC Viewer, type in the ip address from step 2. in the search bar (Figure 4)
+  \item Take note of the ip under "Connectivity" and the catchphrase under "Security" (see Figure 3)
+  \item From the computer you want to connect from, download \href{https://www.realvnc.com/en/connect/download/viewer/}{VNC Viewer for the OS of this machine} 
+  \item From VNC Viewer, type in the ip address from step 2 in the search bar (Figure 4)
   \item You should be prompted to type in the password for the login to the Pi's, then should be connected
 \end{enumerate}
 \begin{figure}[ht]
@@ -91,18 +91,17 @@ For Windows:
 
 \newpage
 \section{Auto Start}
-This section will detail how the Pi's were set up so that on boot, certain web pages are opened automatically. This is done all through the Pi's terminal. \newline
+This section will detail how the Pi's were set up so that on boot, certain web pages are opened automatically. This is done all through the Pi's terminal. \newline \newline
 {\fontfamily{qcr}\selectfont
-\# this is a comment
-
-\# from the home directory "pi@Pi-#:~ \$"
-\# need to get to the configuration settings
-cd .config \newline
-\# creating two new directories, error presents itself if directories already exist
-sudo mkdir -p lxsession/LXDE-pi \newline
-\# opening the built-in autostart folder
-sudo nano lxsession/LXDE-pi/autostart \newline
-\# copy this inside the editor
+\# this is a comment \newline \newline
+\# from the home directory "pi@Pi-\#:~\$" \newline
+\# need to get to the configuration settings \newline
+cd .config \\~\\
+\# creating two new directories, error presents itself \newline \# if directories already exist \newline
+sudo mkdir -p lxsession/LXDE-pi \\~\\
+\# opening the built-in autostart folder \newline
+sudo nano lxsession/LXDE-pi/autostart \\~\\
+\# copy this inside the editor \newline
 @lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
 #@xscreensaver -no-splash
@@ -111,9 +110,15 @@ sudo nano lxsession/LXDE-pi/autostart \newline
 @xset s noblank
 point-rpi
 @chromium-browser --start-fullscreen --start-maximized https://YOURURL.com/ \newline
-\# note the YOURURL will be changed with what you would wanton autostart
-
+\# note the YOURURL will be changed with what you would want \newlineo
+\# on autostart. the "#@xscreensaver -no-splash" ensures \newline \# the pi does not sleep \\~\\
+CTRL + x(saves), Y (yes), enter \\~\\
+\# ensure it works \newline
+sudo reboot
 }
-
-\section{A Note On Passwords}
+\\~\\
+\textbf{Note: }The browsers with the KPI dashboards utilize \href{https://chrome.google.com/webstore/detail/easy-auto-refresh/aabcgdmkeabbnleenpncegpcngjpnjkc?hl=en}{Easy Auto Refresh}. All chrome extensions from what I have seen \emph{should} be supported by Chromium, the browser the Pi's use. I also installed "Midori", a lightweight browser that can be used.
+\newpage
+\section{A Note On Credentials}
+The password for all the Pi's are the same and is the same password used for local admin accounts. The username for all of them is "pi", however, the local name that you will see in the terminal is "pi@Pi-NUMBER\_1\_THROUGH\_4
 \end{document}
