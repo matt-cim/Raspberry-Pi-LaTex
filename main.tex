@@ -35,17 +35,61 @@ Run "top" via the \textbf{Terminal} for a view with more details including tasks
 
 \newpage
 \section{Network Configuration}
-\subsection{example subsection for network config}
-text for network configuration, show static ip config window and talk about frequent problems. Note the checking check box problem.
+\subsection{Wireless Connection}
+After right clicking on the wifi icon and selecting "Wireless \& Wired Network Settings", you will want to mimic the settings to follow this: \\
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=1]{network config.pdf}
+    \caption{Ensure you are in "wlan0" tab}
+\end{figure}
+This is for a static ip configuration, which is the preferred config. and the "8.8.8.8" is just the primary DNS server for Google. One thing I noticed that was causing frequent problems with the ip address being randomly changed was the "Automatically configure empty options" box being checked even though the settings aboved were typed into the box. Please make sure this is \textbf{not checked}.
+\subsection{Finding ip via Terminal}
+Typing in the command \textbf{ifconfig} will give you the netmask, and the ip can be found next to "inet" under the "wlan0" section.
 
 \newpage
 \section{How to Connect}
-text for connection. Talk about ssh and vnc viewer. with ssh, mentioned must do "sudo reboot".
+\subsection{VNC}
+VNC viewer is what we are currently using for remote connection into the Pi's, and I was able to use VNC viewer without making an account. \\
 
+Steps for setting up VNC Viewer:
+\begin{enumerate}
+  \item Download \href{https://www.realvnc.com/en/connect/download/vnc/}{VNC Server for the Raspberry Pi OS}
+  \item Take note of the ip under "Connectivity" and the passphrase under "Security" (see Figure 3)
+  \item From the computer you want to connect from, download \href{https://www.realvnc.com/en/connect/download/viewer/}{VNC Viewer for OS of this machine} 
+  \item From VNC Viewer, type in the ip address from step 2. in the search bar (Figure 4)
+  \item You should be prompted to type in the password for the login to the Pi's, then should be connected
+\end{enumerate}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=1]{vnc server.pdf}
+    \caption{}
+\end{figure}
+\newpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=1]{vnc bar.pdf}
+    \caption{}
+\end{figure}
+
+\subsection{SSH}
+This is more straight forward than VNC. \newline \newline For Mac:
+\begin{enumerate}
+  \item Open the Terminal
+  \item Type in \textbf{ssh pi@INSERT\_IP\_ADDRESS}
+  \item You will be prompted to type in the Pi's password, then should be all good
+\end{enumerate}
+For Windows:
+\begin{enumerate}
+  \item Open PuTTy
+  \item Type in the Pi's ip address in the host name box
+  \item Ensure ssh is the connection type
+  \item \textbf{open}
+  \item login with credentials ex: \textbf{pi@Pi-\#}
+\end{enumerate}
 
 \newpage
 \section{Auto Start}
 text for autostart. see notes
 
-
+\section{A note on passwords}
 \end{document}
