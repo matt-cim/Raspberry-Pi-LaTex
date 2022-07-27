@@ -36,13 +36,13 @@ Run "top" via the \textbf{Terminal} for a view with more details including tasks
 \newpage
 \section{Network Configuration}
 \subsection{Wireless Connection}
-After right clicking on the wifi icon and selecting "Wireless \& Wired Network Settings", you will want to mimic the settings to follow this: \\
+After right clicking on the wifi icon and selecting "Wireless \& Wired Network Settings", you will want to mimic the settings to follow this:
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=1]{network config.pdf}
     \caption{Ensure you are in "wlan0" tab}
 \end{figure}
-This is for a static ip configuration, which is the preferred config. and the "8.8.8.8" is just the primary DNS server for Google. One thing I noticed that was causing frequent problems with the ip address being randomly changed was the "Automatically configure empty options" box being checked even though the settings aboved were typed into the box. Please make sure this is \textbf{not checked}.
+\newline This is for a static ip configuration, which is the preferred config. and the "8.8.8.8" is just the primary DNS server for Google. One thing I noticed that was causing frequent problems with the ip address being randomly changed was the "Automatically configure empty options" box being checked even though the settings aboved were typed into the box. Please make sure this is \textbf{not checked}.
 \subsection{Finding ip via Terminal}
 Typing in the command \textbf{ifconfig} will give you the netmask, and the ip can be found next to "inet" under the "wlan0" section.
 
@@ -86,10 +86,34 @@ For Windows:
   \item \textbf{open}
   \item login with credentials ex: \textbf{pi@Pi-\#}
 \end{enumerate}
+\newline
+\textbf{Note: }In order to reboot the Pi's when connected through SSH, you must put the keyword \textbf{sudo} before commands that require sudo privileges. An example would be \textbf{sudo reboot}. 
 
 \newpage
 \section{Auto Start}
-text for autostart. see notes
+This section will detail how the Pi's were set up so that on boot, certain web pages are opened automatically. This is done all through the Pi's terminal. \newline
+{\fontfamily{qcr}\selectfont
+\# this is a comment
 
-\section{A note on passwords}
+\# from the home directory "pi@Pi-#:~ \$"
+\# need to get to the configuration settings
+cd .config \newline
+\# creating two new directories, error presents itself if directories already exist
+sudo mkdir -p lxsession/LXDE-pi \newline
+\# opening the built-in autostart folder
+sudo nano lxsession/LXDE-pi/autostart \newline
+\# copy this inside the editor
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+#@xscreensaver -no-splash
+@xset s off
+@xset -dpms
+@xset s noblank
+point-rpi
+@chromium-browser --start-fullscreen --start-maximized https://YOURURL.com/ \newline
+\# note the YOURURL will be changed with what you would wanton autostart
+
+}
+
+\section{A Note On Passwords}
 \end{document}
