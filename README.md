@@ -1,1 +1,1 @@
-![](Pi_Manual.pdf)
+ Open Pi_Manual.pdf
